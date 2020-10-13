@@ -4,10 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
         
-  # with_options presence: true, format: { with:/\A.+\z/, message: '必ず入力して下さい' } do
-  #   validates :nickname
-  # end
-
   #deviseに元々設定あるので、こちらは予備
   # with_options presence: true, format: { with:/\A[^@\s]+@[^@\s]+\z/, message: '@を含めて必ず入力して下さい' } do
   #   validates :email
