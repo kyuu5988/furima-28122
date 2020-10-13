@@ -38,45 +38,78 @@ describe User, type: :model do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email 以下のアドレスは使用済みです。")
       end
+      it "emailに@が無いと登録NG" do
+        @user.email = "sample.com"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email は有効でありません。")
+      end
       it "passwordが無いと登録NG" do
         @user.password = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password こちらは必ず入力して下さい。")
       end
       it "passwordが5文字以下は登録NG" do
-        @user.password = "12345"
-        @user.password_confirmation = "12345"
+        @user.password = "123ab"
+        @user.password_confirmation = "123ab"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password 6文字以上に設定して下さい。")
+      end
+      it "passwordが英字のみだと登録NG" do
+        @user.password = "samplesample"
+        @user.password_confirmation = "samplesample"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password 英字と数字を含めて入力して下さい")
+      end
+      it "passwordが数字のみだと登録NG" do
+        @user.password = "123456"
+        @user.password_confirmation = "123456"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password 英字と数字を含めて入力して下さい")
       end
       it "password_confirmationが無いと登録NG" do
         @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation 再入力のパスワードと一致していません。")
       end
-      it "名前漢字が無いと登録NG" do
+      it "last_nameが無いと登録NG" do
         @user.last_name = ''
-        @user.first_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name こちらは必ず入力して下さい。")            
       end
-      it "名前漢字が英半角だと登録NG" do
+      it "first_nameが無いと登録NG" do
+        @user.first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name こちらは必ず入力して下さい。")            
+      end
+      it "last_nameが英半角だと登録NG" do
         @user.last_name = 'yamada'
-        @user.first_name = 'taro'
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name 全角日本語を使用してください")            
       end
-      it "名前カナが無いと登録NG" do
+      it "first_nameが英半角だと登録NG" do
+        @user.first_name = 'taro'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 全角日本語を使用してください")            
+      end
+      it "last_kanaが無いと登録NG" do
         @user.last_kana = ''
-        @user.first_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last kana こちらは必ず入力して下さい。")            
       end
-      it "名前カナが漢字だと登録NG" do
+      it "first_kana無いと登録NG" do
+        @user.first_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First kana こちらは必ず入力して下さい。")            
+      end
+      it "last_kanaが漢字だと登録NG" do
         @user.last_kana = '山田'
-        @user.first_kana = '太郎'
         @user.valid?
         expect(@user.errors.full_messages).to include("Last kana 全角カタカナを使用してください")            
+      end
+      it "first_kanaが漢字だと登録NG" do
+        @user.first_kana = '太郎'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First kana 全角カタカナを使用してください")            
       end
       it "生年月日が無いと登録NG" do
         @user.b_day = ''
