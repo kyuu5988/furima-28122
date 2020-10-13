@@ -11,7 +11,7 @@
 | first_name| string | null: false |
 | last_kana | string | null: false |
 | first_kana| string | null: false |
-| b_day     | string | null: false |
+| b_day     | date   | null: false |
 
 ### Association
 
@@ -25,11 +25,11 @@
 | user     | references | null: false, foreign_key: true |
 | p_name   | string     | null: false                    |
 | p_info   | text       | null: false                    |
-| ctg      | string     | null: false                    |
-| status   | string     | null: false                    |
-| deli_fee | boolean    | null: false                    |
-| deli_area| string     | null: false                    |
-| deli_days| string     | null: false                    |
+| ctg_id   | integer    | null: false                    |
+| status_id| integer    | null: false                    |
+| de_fee_id| integer    | null: false                    |
+| de_are_id| integer    | null: false                    |
+| de_day_id| integer    | null: false                    |
 | price    | integer    | null: false                    |
 | sold     | boolean    | null: false                    |
 
@@ -44,10 +44,6 @@
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
 | item    | references | null: false, foreign_key: true |
-| card_no | string     | null: false                    |
-| card_mm | string     | null: false                    |
-| card_yy | string     | null: false                    |
-| card_cvc| string     | null: false                    |
 
 ### Association
 
@@ -61,9 +57,9 @@
 | ------- | ---------- | ------------------------------ |
 | order   | references | null: false, foreign_key: true |
 | post    | string     | null: false                    |
-| pref    | string     | null: false                    |
+| pref_id | integer    | null: false                    |
 | city    | string     | null: false                    |
-| area_id | integer    | null: false                    |
+| area    | string     | null: false                    |
 | bld     | string     |                                |
 | phone   | string     | null: false                    |
 
