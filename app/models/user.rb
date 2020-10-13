@@ -6,15 +6,11 @@ class User < ApplicationRecord
         
   with_options presence: true, format: { with:/\A.+\z/, message: '必ず入力して下さい' } do
     validates :nickname
-    validates :b_day
   end
 
   with_options presence: true, format: { with:/\A[^@\s]+@[^@\s]+\z/, message: '@を含めて必ず入力して下さい' } do
     validates :email
   end
-
-
-
 
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
