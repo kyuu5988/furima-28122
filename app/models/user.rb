@@ -4,10 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
         
-  validates :nickname, :b_day, presence: true
-  # validates :password, length:{ minimum: 6, message:'6桁ありません' }, format: { with: /\A\d{3}/, message: '半角数字のみ登録可' }
+  with_options presence: true, format: { with:/\A.+\z/, message: '必ず入力して下さい' } do
+    validates :nickname
+    validates :b_day
+  end
+
+  with_options presence: true, format: { with:/\A[^@\s]+@[^@\s]+\z/, message: '@を含めて必ず入力して下さい' } do
+    validates :email
+  end
+
+
+
+
+
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
+  validates_format_of :password, with: PASSWORD_REGEX, message: '英字と数字を含めて入力して下さい'
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
     validates :last_name
@@ -21,3 +32,4 @@ class User < ApplicationRecord
 
 
 end
+
