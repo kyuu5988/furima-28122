@@ -1,0 +1,2 @@
+class DeDay < ApplicationRecord
+end

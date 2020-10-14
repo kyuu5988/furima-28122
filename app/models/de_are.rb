@@ -1,0 +1,2 @@
+class DeAre < ApplicationRecord
+end

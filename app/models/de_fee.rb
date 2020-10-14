@@ -1,0 +1,2 @@
+class DeFee < ApplicationRecord
+end
