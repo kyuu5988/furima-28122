@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ .logout_notice{
+   margin: 5px 10px 5px 5px;
+   font-size: 11px;
+   color: lightcoral;
+ }
