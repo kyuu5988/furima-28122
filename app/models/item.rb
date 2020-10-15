@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  validate :image_checher
+  validate :image_checher, :size_checker
 
   def image_checher
     if image.attached?
@@ -17,6 +17,14 @@ class Item < ApplicationRecord
       end
     else
       errors.add(:image, '画像は必ず添付してください')
+    end
+  end
+
+  def size_checker
+    if image.attached?
+      if image.blob.byte_size > 8.megabytes
+        errors.add(:image, 'ファイルは8MB未満にして下さい')
+      end
     end
   end
 
