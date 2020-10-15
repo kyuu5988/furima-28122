@@ -6,6 +6,20 @@ class Item < ApplicationRecord
   belongs_to_active_hash :de_day
   belongs_to_active_hash :status
 
+  has_one_attached :image
+
+  validate :image_checher
+
+  def image_checher
+    if image.attached?
+      if !image.content_type.in?(%('image/jpeg image/png'))
+        errors.add(:image, 'jpegまたはpngファイルを添付してください')
+      end
+    else
+      errors.add(:image, '画像は必ず添付してください')
+    end
+  end
+
   belongs_to :user
   # has_one :order
 

@@ -15,10 +15,11 @@
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
+        <p class="error-message"><%= @item.errors.messages[:image][0] %></p>
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :hoge, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
     <%# /出品画像 %>
