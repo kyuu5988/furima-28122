@@ -101,11 +101,12 @@
           <div class="price-text">
             <span>価格</span>
             <span class="indispensable">必須</span>
-        <p class="error-message"><%= @item.errors.messages[:price][0] %></p>
           </div>
           <span class="sell-yen">¥</span>
           <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
         </div>
+          <p class="error-message"><%= @item.errors.messages[:price][0] %></p>
+          <p class="error-message"><%= @item.errors.messages[:price][1] %></p>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
           <span>

@@ -11,7 +11,6 @@ ja:
       - :month
       - :day
 #出品時のエラーメッセージ
-ja:
   activerecord:
     errors:
       models:
@@ -29,4 +28,3 @@ ja:
               other_than: "発送までの日数は必ず選んで下さい。"
 
 
-              
