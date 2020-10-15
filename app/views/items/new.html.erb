@@ -4,6 +4,7 @@
 
   </header>
   <div class="items-sell-main">
+    <p class="error-message"><%= flash[:blank] %></p>
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model:@item, url:items_path, local: true do |f| %>
 
@@ -53,6 +54,7 @@
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
+        <p class="error-message"><%= @item.errors.messages[:status_id][0] %></p>
         </div>
         <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
@@ -69,16 +71,19 @@
         <div class="weight-bold-text">
           配送料の負担
           <span class="indispensable">必須</span>
+        <p class="error-message"><%= @item.errors.messages[:de_fee_id][0] %></p>
         </div>
         <%= f.collection_select(:de_fee_id, DeFee.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
+        <p class="error-message"><%= @item.errors.messages[:de_are_id][0] %></p>
         </div>
         <%= f.collection_select(:de_are_id, DeAre.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
+        <p class="error-message"><%= @item.errors.messages[:de_day_id][0] %></p>
         </div>
         <%= f.collection_select(:de_day_id, DeDay.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
@@ -96,9 +101,10 @@
           <div class="price-text">
             <span>価格</span>
             <span class="indispensable">必須</span>
+        <p class="error-message"><%= @item.errors.messages[:price][0] %></p>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :hoge, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>

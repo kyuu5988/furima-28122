@@ -10,7 +10,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-    else    
+    else
+      flash[:blank] = "[ エラー ] 入力・選択していない箇所があります。"    
       render :new
     end
   end
