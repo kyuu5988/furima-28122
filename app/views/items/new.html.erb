@@ -47,6 +47,7 @@
         <div class="weight-bold-text">
           カテゴリー
           <span class="indispensable">必須</span>
+        <p class="error-message"><%= @item.errors.messages[:ctg_id][0] %></p>
         </div>
         <%= f.collection_select(:ctg_id, Ctg.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">

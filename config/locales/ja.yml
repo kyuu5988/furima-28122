@@ -10,3 +10,12 @@ ja:
       - :year
       - :month
       - :day
+#出品時のエラーメッセージ
+ja:
+  activerecord:
+    errors:
+      models:
+        item:
+          attributes:
+            ctg_id:
+              other_than: "カテゴリーは必ず選んで下さい。"
