@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  before_action :move_to_index, except: [:index]
+
   def index    
   end
 
@@ -22,4 +25,12 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:p_name,:p_info,:ctg_id,:status_id,:de_fee_id,:de_are_id,:de_day_id,:price,:image).merge(user_id: current_user[:id],sold: false)
   end
+
+  def move_to_index
+    unless user_signed_in?
+      flash[:notice] = "[ エラー ] 出品するにはログインが必要です。"    
+      redirect_to action: :index
+    end
+  end
+
 end
