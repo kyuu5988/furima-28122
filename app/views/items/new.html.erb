@@ -104,7 +104,7 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.number_field :price, class:"price-input", id:"item-price", placeholder:"例）300", autocomplete: "off", min: 300, max: 9999999 %>
         </div>
           <p class="error-message"><%= @item.errors.messages[:price][0] %></p>
           <p class="error-message"><%= @item.errors.messages[:price][1] %></p>
