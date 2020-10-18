@@ -10,113 +10,68 @@ describe Item, type: :model do
       it "全カラムに対して指定の値であれば登録OK" do
         expect(@item).to be_valid
       end
-      # it "nicknameが日本語で登録OK" do
-      #   @user.nickname = "にっくねーむ" 
-      #   expect(@user).to be_valid
-      # end
-      # it "passwordが6文字以上の英数で登録OK" do
-      #    @user.password = "1234ab"
-      #    @user.password_confirmation = "1234ab"
-      #    expect(@user).to be_valid
-      # end
+      it "金額が9,999,999円まで登録OK" do
+        @item.price = 9999999
+        expect(@item).to be_valid
+      end
     end
 
-    # context '出品が異常な場合' do
-    #   it "nicknameが無いと登録NG" do
-    #     @user.nickname = ''
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Nickname こちらは必ず入力して下さい。")
-    #   end       
-    #   it "emailが無いと登録NG" do
-    #     @user.email = ""
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Email こちらは必ず入力して下さい。")
-    #   end    
-    #   it "同じemailは登録NG" do
-    #     @user.save
-    #     another_user = FactoryBot.build(:user)
-    #     another_user.email = @user.email
-    #     another_user.valid?
-    #     expect(another_user.errors.full_messages).to include("Email 以下のアドレスは使用済みです。")
-    #   end
-    #   it "emailに@が無いと登録NG" do
-    #     @user.email = "sample.com"
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Email は有効でありません。")
-    #   end
-    #   it "passwordが無いと登録NG" do
-    #     @user.password = ""
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Password こちらは必ず入力して下さい。")
-    #   end
-    #   it "passwordが5文字以下は登録NG" do
-    #     @user.password = "123ab"
-    #     @user.password_confirmation = "123ab"
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Password 6文字以上に設定して下さい。")
-    #   end
-    #   it "passwordが英字のみだと登録NG" do
-    #     @user.password = "samplesample"
-    #     @user.password_confirmation = "samplesample"
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Password 英字と数字を含めて入力して下さい")
-    #   end
-    #   it "passwordが数字のみだと登録NG" do
-    #     @user.password = "123456"
-    #     @user.password_confirmation = "123456"
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Password 英字と数字を含めて入力して下さい")
-    #   end
-    #   it "password_confirmationが無いと登録NG" do
-    #     @user.password_confirmation = ""
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Password confirmation 再入力のパスワードと一致していません。")
-    #   end
-    #   it "last_nameが無いと登録NG" do
-    #     @user.last_name = ''
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Last name こちらは必ず入力して下さい。")            
-    #   end
-    #   it "first_nameが無いと登録NG" do
-    #     @user.first_name = ''
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("First name こちらは必ず入力して下さい。")            
-    #   end
-    #   it "last_nameが英半角だと登録NG" do
-    #     @user.last_name = 'yamada'
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Last name 全角日本語を使用してください")            
-    #   end
-    #   it "first_nameが英半角だと登録NG" do
-    #     @user.first_name = 'taro'
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("First name 全角日本語を使用してください")            
-    #   end
-    #   it "last_kanaが無いと登録NG" do
-    #     @user.last_kana = ''
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Last kana こちらは必ず入力して下さい。")            
-    #   end
-    #   it "first_kana無いと登録NG" do
-    #     @user.first_kana = ''
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("First kana こちらは必ず入力して下さい。")            
-    #   end
-    #   it "last_kanaが漢字だと登録NG" do
-    #     @user.last_kana = '山田'
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("Last kana 全角カタカナを使用してください")            
-    #   end
-    #   it "first_kanaが漢字だと登録NG" do
-    #     @user.first_kana = '太郎'
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("First kana 全角カタカナを使用してください")            
-    #   end
-    #   it "生年月日が無いと登録NG" do
-    #     @user.b_day = ''
-    #     @user.valid?
-    #     expect(@user.errors.full_messages).to include("B day こちらは必ず入力して下さい。")            
-    #   end
-    # end
+    context '出品が異常な場合' do
+      it "画像添付が無いと登録NG" do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image 画像は必ず添付してください")
+      end
+      it "商品名が無いと登録NG" do
+        @item.p_name = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("P name こちらは必ず入力して下さい。")
+      end
+      it "商品説明が無いと登録NG" do
+        @item.p_info = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("P info こちらは必ず入力して下さい。")
+      end
+      it "カテゴリーの選択が無いと登録NG" do
+        @item.ctg_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Ctg カテゴリーは必ず選んで下さい。")
+      end
+      it "商品状態の選択が無いと登録NG" do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status 商品の状態は必ず選んで下さい。")
+      end
+      it "送料負担の選択が無いと登録NG" do
+        @item.de_fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("De fee 配送料の負担は必ず選んで下さい。")
+      end
+      it "発送元の選択が無いと登録NG" do
+        @item.de_are_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("De are 発送元の地域は必ず選んで下さい。")
+      end
+      it "発送日数の選択が無いと登録NG" do
+        @item.de_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("De day 発送までの日数は必ず選んで下さい。")
+      end
+      it "販売価格が無いと登録NG" do
+        @item.price = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price こちらは必ず入力して下さい。")
+      end
+      it "販売価格が規定を超えると登録NG" do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price 指定の範囲で半角数字で入力して下さい。")
+      end
+      it "販売価格が規定未満だと登録NG" do
+        @item.price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price 指定の範囲で半角数字で入力して下さい。")
+      end
+    end
   end
 end

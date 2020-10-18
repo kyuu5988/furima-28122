@@ -51,13 +51,13 @@
           <span class="indispensable">必須</span>
         <p class="error-message"><%= @item.errors.messages[:ctg_id][0] %></p>
         </div>
-        <%= f.collection_select(:ctg_id, Ctg.all, :id, :name, {}, {class:"select-box", id:"item-category",name:"ctg"}) %>
+        <%= f.collection_select(:ctg_id, Ctg.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         <p class="error-message"><%= @item.errors.messages[:status_id][0] %></p>
         </div>
-        <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box", id:"item-sales-status",name:"status"}) %>
+        <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -74,19 +74,19 @@
           <span class="indispensable">必須</span>
         <p class="error-message"><%= @item.errors.messages[:de_fee_id][0] %></p>
         </div>
-        <%= f.collection_select(:de_fee_id, DeFee.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status",name:"fee"}) %>
+        <%= f.collection_select(:de_fee_id, DeFee.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         <p class="error-message"><%= @item.errors.messages[:de_are_id][0] %></p>
         </div>
-        <%= f.collection_select(:de_are_id, DeAre.all, :id, :name, {}, {class:"select-box", id:"item-prefecture",name:"are"}) %>
+        <%= f.collection_select(:de_are_id, DeAre.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         <p class="error-message"><%= @item.errors.messages[:de_day_id][0] %></p>
         </div>
-        <%= f.collection_select(:de_day_id, DeDay.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery",name:"day"}) %>
+        <%= f.collection_select(:de_day_id, DeDay.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
