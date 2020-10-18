@@ -20,3 +20,14 @@
 .purchase-btn-icon {
   width: 60%;
 }
+
+.notuser_notice {
+  width: 280px;
+  background: palevioletred;
+  text-align: center;
+  border-radius: 20%;
+  bottom: 160px;
+  right: 2px;
+  position: fixed;
+  color: #fff;
+}

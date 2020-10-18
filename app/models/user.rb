@@ -4,10 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
         
-  #deviseに元々設定あるので、こちらは予備
-  # with_options presence: true, format: { with:/\A[^@\s]+@[^@\s]+\z/, message: '@を含めて必ず入力して下さい' } do
-  #   validates :email
-  # end
+  has_many :items
+  # has_many :orders
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: '英字と数字を含めて入力して下さい'
@@ -25,4 +23,3 @@ class User < ApplicationRecord
   validates :b_day, :nickname, presence: true
 
 end
-

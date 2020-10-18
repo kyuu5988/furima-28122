@@ -10,3 +10,21 @@ ja:
       - :year
       - :month
       - :day
+#出品時のエラーメッセージ
+  activerecord:
+    errors:
+      models:
+        item:
+          attributes:
+            ctg_id:
+              other_than: "カテゴリーは必ず選んで下さい。"
+            status_id:
+              other_than: "商品の状態は必ず選んで下さい。"
+            de_fee_id:
+              other_than: "配送料の負担は必ず選んで下さい。"
+            de_are_id:
+              other_than: "発送元の地域は必ず選んで下さい。"
+            de_day_id:
+              other_than: "発送までの日数は必ず選んで下さい。"
+
+
