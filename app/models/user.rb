@@ -23,4 +23,3 @@ class User < ApplicationRecord
   validates :b_day, :nickname, presence: true
 
 end
-

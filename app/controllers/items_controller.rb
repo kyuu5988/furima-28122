@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 
   def move_to_index
     unless user_signed_in?
-      flash[:notice] = "[ エラー ] 出品するにはログインが必要です。"    
+      flash[:notuser] = "出品するにはログインが必要です。"    
       redirect_to action: :index
     end
   end
