@@ -8,9 +8,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  validate :image_checher, :size_checker
+  validate :image_checker, :size_checker
 
-  def image_checher
+  def image_checker
     if image.attached?
       if !image.content_type.in?(%('image/jpeg image/png'))
         errors.add(:image, 'jpegまたはpngファイルを添付してください')
