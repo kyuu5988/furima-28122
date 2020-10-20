@@ -23,16 +23,18 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
   end
 
   def destroy
-    @item.destroy
-    flash[:destroy] = "出品した商品を削除しました。"    
-    redirect_to root_path
+    if current_user.id == @item.user_id
+      @item.destroy
+      flash[:destroy] = "出品した商品を削除しました。"    
+      redirect_to root_path
+    else
+      flash[:destroy] = "出品したユーザー以外は削除できません。"
+      render :show
+    end    
   end
 
   private
