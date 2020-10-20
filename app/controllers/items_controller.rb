@@ -24,8 +24,14 @@ class ItemsController < ApplicationController
   end
 
   def update
-
-  end
+      if @item.update(item_params)
+        flash[:update] = "出品内容の変更が完了しました。(変更が無い場合も表示されます)"
+        render :show
+      else
+        flash[:blank] = "[ エラー ] 入力・選択していない箇所があります。画像は再度選択をお願い致します。"    
+        render :edit
+      end
+    end
 
   def destroy
     if current_user.id == @item.user_id
