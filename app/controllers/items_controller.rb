@@ -1,8 +1,6 @@
 class ItemsController < ApplicationController
-
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
-
 
   def index
     @items = Item.order("created_at DESC")
@@ -28,7 +26,7 @@ class ItemsController < ApplicationController
         flash[:update] = "出品内容の変更が完了しました。(変更が無い場合も表示されます)"
         render :show
       else
-        flash[:blank] = "[ エラー ] 入力・選択していない箇所があります。画像は再度選択をお願い致します。"    
+        flash[:blank] = "[ エラー ] 入力・選択していない箇所があります。画像は再度選択をお願い致します。（画像変更がある場合）"    
         render :edit
       end
     end
