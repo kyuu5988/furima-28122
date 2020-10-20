@@ -26,7 +26,9 @@
     <% if user_signed_in? && current_user.id == @item.user_id %>
     <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
-    <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+    <p class="item-destroy" id="del-check">削除</p>
+    <%= link_to '完全に削除する', item_path(@item.id), method: :delete, class:'del-btn' %>
+    <p class="del-cancel" id="del-no">キャンセル</p>
     <% end %>
 
     <% if user_signed_in? && current_user.id != @item.user_id  && @item.sold == false %>
