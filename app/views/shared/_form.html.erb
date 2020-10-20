@@ -4,6 +4,8 @@
         出品画像
         <span class="indispensable">必須</span>
       </div>
+      <%= image_tag @item.image.variant(resize:'250x250'), class:'img-tn' if @item.image.attached? %>
+      <% if @item.image.attached? %><p class="tn" >編集中の商品</p><% end %>
       <div class="click-upload">
         <p class="error-message"><%= @item.errors.messages[:image][0] %></p>
         <p>
