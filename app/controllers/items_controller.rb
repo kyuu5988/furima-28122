@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:create] = "出品が完了しました！"    
       redirect_to root_path
     else
       flash[:blank] = "[ エラー ] 入力・選択していない箇所があります。画像は再度選択をお願い致します。"    
@@ -30,7 +31,8 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    
+    flash[:destroy] = "出品した商品を削除しました。"    
+    redirect_to root_path
   end
 
   private

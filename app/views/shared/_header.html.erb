@@ -16,6 +16,8 @@
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
+      <li class="logout_notice" ><%= flash[:create] %></li>
+      <li class="logout_notice" ><%= flash[:destroy] %></li>
       <li><%= link_to current_user.nickname, "/users#{current_user.id}", class: "user-nickname" %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
