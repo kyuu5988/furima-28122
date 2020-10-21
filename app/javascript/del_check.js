@@ -15,4 +15,3 @@ function del_check() {
 
 }
 setInterval(del_check,5000);
-// window.addEventListener('load',del_check)
