@@ -71,6 +71,7 @@
   color: black;
   margin: 20px 0px;
   padding: 2vh 10vw;
+  cursor: pointer;
 }
 
 .item-explain-box {
@@ -204,3 +205,51 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.del-btn {
+  width: 480px;
+  height: 40px;
+  font-size: 24px;
+  background: palevioletred;
+  text-align: center;
+  top: 30px;
+  right: center;
+  position: fixed;
+  color: #fff;
+  display: none;
+}
+
+.del-cancel {
+  width: 480px;
+  height: 40px;
+  font-size: 24px;
+  background: teal;
+  text-align: center;
+  top: 75px;
+  right: center;
+  position: fixed;
+  color: #fff;
+  display: none;
+  cursor: pointer;
+}
+
+.img-tn {
+  width: auto;
+  height: auto;
+  top: 55px;
+  right: 20px;
+  position: fixed;
+}
+
+.tn {
+  width: 250px;
+  height: 20px;
+  font-size: 12px;
+  color: #eee;
+  background: black;
+  text-align: center;
+  top: 35px;
+  right: 20px;
+  position: fixed;
+}
+

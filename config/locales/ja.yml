@@ -26,5 +26,13 @@ ja:
               other_than: "発送元の地域は必ず選んで下さい。"
             de_day_id:
               other_than: "発送までの日数は必ず選んで下さい。"
+  #通貨表示用
+  number:
+    currency:
+      format:
+        unit: "円"
+        format: "%n%u"
+        negative_format: "-%n%u"
+        precision: 0
 
 
