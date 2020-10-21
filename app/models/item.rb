@@ -29,7 +29,7 @@ class Item < ApplicationRecord
   end
 
   belongs_to :user
-  # has_one :order
+  has_one :order
 
   validates :p_name, :p_info, :ctg, :de_are, :de_day, :de_fee, :status, presence: true
 
