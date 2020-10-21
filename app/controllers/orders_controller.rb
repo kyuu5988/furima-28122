@@ -15,4 +15,27 @@ class OrdersController < ApplicationController
     end
 
   end
+
+  def new
+    @ord_adrs = OrdAdrs.new
+  end
+ 
+  def create
+    @ord_adrs = OrdAdrs.new(order_params)
+     if @ord_adrs.valid?
+       @ord_adrs.save
+       redirect_to action: :index
+     else
+      flash[:cantbuy] = "購入エラー（現在まだ記述してるとこ）"    
+      redirect_to root_path
+   end
+  end
+ 
+  private
+  def order_params
+   params.permit(:post, :pref_id, :city, :area, :bld, :phone).merge(user_id: current_user[:id])#,:item_id, :order_id)
+  end
+
 end
+
+# require(:ord_adrs).

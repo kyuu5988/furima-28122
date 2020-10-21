@@ -10,7 +10,10 @@ class OrdAdrs
 
   validates :pref_id, numericality: { other_than: 0, message: "必ず選択して下さい。" }
 
-  
+  def save
+    
+    Address.create(post: post, pref_id: pref_id, city: city, area: area, bld: bld,phone: phone)
+  end  
 
 
 end
