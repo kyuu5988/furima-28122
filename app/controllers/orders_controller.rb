@@ -21,19 +21,22 @@ class OrdersController < ApplicationController
   end
  
   def create
+    binding.pry
     @ord_adrs = OrdAdrs.new(order_params)
+    # binding.pry
      if @ord_adrs.valid?
        @ord_adrs.save
        redirect_to action: :index
      else
-      flash[:cantbuy] = "購入エラー（現在まだ記述してるとこ）"    
-      redirect_to root_path
+      flash[:cantbuy] = "購入エラー（現在まだ記述してるとこ）" 
+      redirect_to item_orders_path 
+      # redirect_to root_path
    end
   end
  
   private
   def order_params
-   params.permit(:post, :pref_id, :city, :area, :bld, :phone).merge(user_id: current_user[:id])#,:item_id, :order_id)
+   params.permit(:item_id, :post, :pref_id, :city, :area, :bld, :phone).merge(user_id: current_user[:id])#,:item_id, :order_id)
   end
 
 end

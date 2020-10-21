@@ -5,6 +5,8 @@
     <h1 class='transaction-title-text'>
       購入内容の確認
     </h1>
+    <p class="logout_notice" ><%= flash[:cantbuy] %></p>
+
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
       <%= image_tag @item.image, class: 'buy-item-img' %>
@@ -81,6 +83,7 @@
         <div class='form-text-wrap'>
           <label class="form-text">郵便番号</label>
           <span class="indispensable">必須</span>
+        <%# <p class="error-message"><%= @ord_adrs.errors.messages[:post][0] %>
         </div>
         <%= f.text_field :post, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
       </div>
