@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   def create
     # binding.pry
     @ord_adrs = OrdAdrs.new(order_params)
-    binding.pry
+    # binding.pry
      if @ord_adrs.valid?
 
         # 決済処理
@@ -33,8 +33,9 @@ class OrdersController < ApplicationController
        @ord_adrs.save
        redirect_to action: :index
      else
-      flash[:cantbuy] = "購入エラー（現在まだ記述してるとこ）" 
+      flash[:cantbuy] = "購入エラー（現在まだ記述してるとこ）"
       redirect_to item_orders_path 
+      # redirect_to action: :index
       # redirect_to root_path
    end
   end

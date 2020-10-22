@@ -10,11 +10,14 @@ class OrdAdrs
 
   validates :pref_id, numericality: { other_than: 0, message: "必ず選択して下さい。" }
 
-  # validates :token, presence: true
 
   def save
+    # binding.pry
+    # user = Item.find(:item_id)
+
+    order = Order.create(user_id: user_id, item_id: item_id)
     
-    Address.create(post: post, pref_id: pref_id, city: city, area: area, bld: bld,phone: phone)
+    Address.create(order_id: order.id, post: post, pref_id: pref_id, city: city, area: area, bld: bld,phone: phone)
   end  
 
 

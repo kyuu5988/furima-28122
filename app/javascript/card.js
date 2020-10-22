@@ -37,10 +37,15 @@ const pay = () => {
         year.remove();
         //↑フォームのクレジット情報削除
 
-        //JSでフォームの情報を送信（事前に15行でキャンセルしている）
+        //JSでフォームの情報を送信
         document.getElementById("charge-form").submit();
         //↑JSでフォームの送信
+    
+      } else if (status != 200) {
+        alert(`カード情報が入力されていません。または正しくありません。`);
+        // window.location.reload();
       }
+
     });
     //トークン化
 
