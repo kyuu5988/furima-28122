@@ -27,10 +27,14 @@ const pay = () => {
         //debugger;//処理を停止して確認
 
         //フォームのクレジットの情報を削除
-        document.getElementById("card_number").removeAttribute("name");
-        document.getElementById("card-cvc").removeAttribute("name");
-        document.getElementById("card-exp-month").removeAttribute("name");
-        document.getElementById("card-exp-year").removeAttribute("name");
+        const num = document.getElementById("card-number");
+        const cvc = document.getElementById("card-cvc");
+        const month = document.getElementById("card-exp-month");
+        const year = document.getElementById("card-exp-year");
+        num.remove();
+        cvc.remove();
+        month.remove();
+        year.remove();
         //↑フォームのクレジット情報削除
 
         //JSでフォームの情報を送信（事前に15行でキャンセルしている）

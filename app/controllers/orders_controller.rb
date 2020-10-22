@@ -21,10 +21,15 @@ class OrdersController < ApplicationController
   end
  
   def create
-    binding.pry
+    # binding.pry
     @ord_adrs = OrdAdrs.new(order_params)
     # binding.pry
      if @ord_adrs.valid?
+
+        # 決済処理
+        pay_item
+        # /決済処理
+
        @ord_adrs.save
        redirect_to action: :index
      else
@@ -36,7 +41,16 @@ class OrdersController < ApplicationController
  
   private
   def order_params
-   params.permit(:item_id, :post, :pref_id, :city, :area, :bld, :phone).merge(user_id: current_user[:id])#,:item_id, :order_id)
+   params.permit(:authenticity_token, :item_id, :post, :pref_id, :city, :area, :bld, :phone, :token).merge(user_id: current_user[:id])#,:item_id, :order_id)
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 自身のPAY.JPテスト秘密鍵
+      Payjp::Charge.create(
+        amount: order_params[:price],  # 商品の値段
+        card: order_params[:token],    # カードトークン
+        currency: 'jpy'             # 通貨の種類（日本円）
+      )
   end
 
 end
