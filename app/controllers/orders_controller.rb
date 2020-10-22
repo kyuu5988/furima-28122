@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   def create
     # binding.pry
     @ord_adrs = OrdAdrs.new(order_params)
-    # binding.pry
+    binding.pry
      if @ord_adrs.valid?
 
         # 決済処理
@@ -41,7 +41,10 @@ class OrdersController < ApplicationController
  
   private
   def order_params
-   params.permit(:authenticity_token, :item_id, :post, :pref_id, :city, :area, :bld, :phone, :token).merge(user_id: current_user[:id])#,:item_id, :order_id)
+
+   item = Item.find(params[:item_id])
+    
+   params.permit(:authenticity_token, :item_id, :post, :pref_id, :city, :area, :bld, :phone, :token).merge(user_id: current_user[:id], price: item[:price])#,:item_id, :order_id)
   end
 
   def pay_item
