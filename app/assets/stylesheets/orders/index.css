@@ -154,3 +154,17 @@
   font-size: 14px;
   cursor: pointer;
 }
+
+.buy_notice {
+  width: 200px;
+  height: 190px;
+  font-size: 20px;
+  color: #eee;
+  background: palevioletred;
+  text-align: center;
+  top: 250px;
+  right: 20px;
+  position: fixed;
+  border-radius: 4%;
+  border: 3px dotted orange;
+}

@@ -1,6 +1,6 @@
 class OrdAdrs
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :order_id, :post, :pref_id, :city, :area, :bld, :phone, :token, :authenticity_token, :price
+  attr_accessor :user_id, :item_id, :order_id, :post, :pref_id, :city, :area, :bld, :phone, :token, :price, :authenticity_token
 
   with_options presence: true do
     validates :post, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "ハイフンを入れて正しく入力して下さい。"}
@@ -10,15 +10,9 @@ class OrdAdrs
 
   validates :pref_id, numericality: { other_than: 0, message: "必ず選択して下さい。" }
 
-
   def save
-    # binding.pry
-    # user = Item.find(:item_id)
-
-    order = Order.create(user_id: user_id, item_id: item_id)
-    
+    order = Order.create(user_id: user_id, item_id: item_id)    
     Address.create(order_id: order.id, post: post, pref_id: pref_id, city: city, area: area, bld: bld,phone: phone)
   end  
-
 
 end

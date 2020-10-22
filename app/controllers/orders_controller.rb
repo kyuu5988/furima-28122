@@ -21,17 +21,19 @@ class OrdersController < ApplicationController
   end
  
   def create
-    # binding.pry
     @ord_adrs = OrdAdrs.new(order_params)
     # binding.pry
      if @ord_adrs.valid?
+      # 決済処理
+      pay_item
+        
+      # 販売済み処理
+      sold_out
 
-        # 決済処理
-        pay_item
-        # /決済処理
-
-       @ord_adrs.save
-       redirect_to action: :index
+      @ord_adrs.save
+      flash[:buy] = "購入が完了しました！お買い上げありがとうございます！"
+      redirect_to item_path(@ord_adrs.item_id)
+      # redirect_to action: :index
      else
       flash[:cantbuy] = "購入エラー（現在まだ記述してるとこ）"
       redirect_to item_orders_path 
@@ -42,21 +44,23 @@ class OrdersController < ApplicationController
  
   private
   def order_params
-
    item = Item.find(params[:item_id])
-    
-   params.permit(:authenticity_token, :item_id, :post, :pref_id, :city, :area, :bld, :phone, :token).merge(user_id: current_user[:id], price: item[:price])#,:item_id, :order_id)
+   params.permit(:authenticity_token, :item_id, :post, :pref_id, :city, :area, :bld, :phone, :token).merge(user_id: current_user[:id], price: item[:price])
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 自身のPAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
-        amount: order_params[:price],  # 商品の値段
-        card: order_params[:token],    # カードトークン
-        currency: 'jpy'             # 通貨の種類（日本円）
+        amount: order_params[:price],
+        card: order_params[:token], 
+        currency: 'jpy'           
       )
+  end
+
+  def sold_out
+    sold = Item.find(params[:item_id])
+    sold.update(sold: true)
   end
 
 end
 
-# require(:ord_adrs).
