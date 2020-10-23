@@ -73,15 +73,19 @@ const adrs_ck = () => {
       }
     })
 
+    //送信ボタン隠し
     const buyBtn = document.getElementById("b-btn");
+    const neIn = document.getElementById("ne-in");
     window.addEventListener(`input`,function(){
-      console.log('ボタン隠し')
+      console.log('ボタン隠し')//動作ck
       if (postOk.innerHTML == `OK` && prefOk.innerHTML == `OK` 
       && cityOk.innerHTML == `OK` && areaOk.innerHTML == `OK` 
       && telOk.innerHTML == `OK` ){
         buyBtn.setAttribute("style", "display:block;");
+        neIn.setAttribute("style", "display:none;");
       } else {
-        buyBtn.setAttribute("style", "display:none;")
+        buyBtn.setAttribute("style", "display:none;");
+        neIn.setAttribute("style", "display:block;");
       }
     })
 };
