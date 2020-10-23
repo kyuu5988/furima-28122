@@ -28,9 +28,51 @@ const adrs_ck = () => {
       }
     })
 
+    //市区町村確認
+    const city = document.getElementById("city");
+    const cityOk = document.getElementById("city-ok");
 
+    city.addEventListener('input', function(){
+      console.log('市区町村ck')//動作ck
+      if (city.value != `` ) {
+        cityOk.innerHTML = `OK`
+        cityOk.setAttribute("style","background-color:green");
+      }else {
+        cityOk.innerHTML = `必ず入力して下さい`
+        cityOk.setAttribute("style","background-color:red");
+      }
+    })
 
-    
+    //番地確認
+    const area = document.getElementById("addresses");
+    const areaOk = document.getElementById("area-ok");
+
+    area.addEventListener('input', function(){
+      console.log('番地ck')//動作ck
+      if (area.value != `` ) {
+        areaOk.innerHTML = `OK`
+        areaOk.setAttribute("style","background-color:green");
+      }else {
+        areaOk.innerHTML = `必ず入力して下さい`
+        areaOk.setAttribute("style","background-color:red");
+      }
+    })
+
+    //電話番号確認
+    const tel = document.getElementById("phone-number");
+    const telOk = document.getElementById("tel-ok");
+
+    tel.addEventListener('input', function(){
+      console.log('tel-ck')//動作ck
+      if (tel.value.match(/^[0-9]{10,11}$/) ) {
+        telOk.innerHTML = `OK`
+        telOk.setAttribute("style","background-color:green");
+      }else{
+        telOk.innerHTML = `10〜11桁の半角数字で入れて下さい`
+        telOk.setAttribute("style","background-color:red");
+      }
+    })
+
 
 };
 window.addEventListener("load", adrs_ck);
