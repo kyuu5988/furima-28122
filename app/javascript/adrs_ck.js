@@ -73,7 +73,19 @@ const adrs_ck = () => {
       }
     })
 
-
+    const buyBtn = document.getElementById("b-btn");
+    window.addEventListener(`input`,function(){
+      console.log('ボタン隠し')
+      if (postOk.innerHTML == `OK` && prefOk.innerHTML == `OK` 
+      && cityOk.innerHTML == `OK` && areaOk.innerHTML == `OK` 
+      && telOk.innerHTML == `OK` ){
+        buyBtn.setAttribute("style", "display:block;");
+      } else {
+        buyBtn.setAttribute("style", "display:none;")
+      }
+    })
 };
 window.addEventListener("load", adrs_ck);
+
+
 
