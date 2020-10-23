@@ -1,6 +1,6 @@
 const pay = () => {
-
-  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY); // PAY.JPテスト公開鍵
+  console.log('card.js発動中');//動作ck用
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();//Railsの送信をキャンセル
@@ -39,17 +39,16 @@ const pay = () => {
 
         //JSでフォームの情報を送信
         document.getElementById("charge-form").submit();
-        //↑JSでフォームの送信
     
       } else if (status != 200) {
-        alert(`カード情報が入力されていません。または正しくありません。`);
-        // window.location.reload();
+        alert(`カード情報が入力されていません。または正しくありません。もう一度初めから入力して下さい。安全の為に入力情報は削除されます。`);
+        window.location.reload();
       }
 
     });
     //トークン化
 
   });
-
+  
 };
 window.addEventListener("load", pay);
