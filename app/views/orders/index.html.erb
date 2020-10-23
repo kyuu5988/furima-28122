@@ -89,7 +89,7 @@
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">都道府県</label>
-          <span class="indispensable">必須</span>
+          <br><span class="indispensable" id="pref-ok">必須</span>
         </div>
         <%= f.collection_select(:pref_id, Pref.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
       </div>
