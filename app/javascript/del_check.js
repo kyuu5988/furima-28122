@@ -1,4 +1,6 @@
 function del_check() {
+  console.log('del_check.js発動中');//動作ck用
+
   const delCheck = document.getElementById("del-check")
   const delYes = document.querySelector(".del-btn")
   const delNo = document.getElementById("del-no")
@@ -14,4 +16,5 @@ function del_check() {
   })
 
 }
-setInterval(del_check,5000);
+
+window.addEventListener("load", del_check);

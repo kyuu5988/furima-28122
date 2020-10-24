@@ -8,7 +8,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("../fee")
-// require("../del_check")
+require("../del_check")
 require("../card")
 require("../adrs_ck")
 
