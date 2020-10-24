@@ -22,7 +22,6 @@ class OrdersController < ApplicationController
  
   def create
     @ord_adrs = OrdAdrs.new(order_params)
-    # binding.pry
      if @ord_adrs.valid?
       # 決済処理
       pay_item
@@ -33,13 +32,11 @@ class OrdersController < ApplicationController
       @ord_adrs.save
       flash[:buy] = "購入が完了しました！お買い上げありがとうございます！"
       redirect_to item_path(@ord_adrs.item_id)
-      # redirect_to action: :index
      else
-      flash[:cantbuy] = "購入エラー（現在まだ記述してるとこ）"
+      flash[:cantbuy] = "入力内容に不備があります。もう一度初めから入力して下さい。"
       redirect_to item_orders_path 
-      # redirect_to action: :index
-      # redirect_to root_path
-   end
+
+    end
   end
  
   private

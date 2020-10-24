@@ -1,12 +1,10 @@
 const adrs_ck = () => {
-  console.log('adrs_ck.js発動中');//動作ck用
 
     //カード番号確認
     const card = document.getElementById("card-number");
     const cardOk = document.getElementById("card-ok");
 
     card.addEventListener('input', function(){
-      console.log('カード番号ck')//動作ck
       if (card.value.match(/^[0-9]{16}$/) ) {
         cardOk.innerHTML = `OK`
         cardOk.setAttribute("style","background-color:green");
@@ -22,7 +20,6 @@ const adrs_ck = () => {
     const expOk = document.getElementById("exp-ok");
 
     expMon.addEventListener('input', function(){
-      console.log('有効monck')//動作ck
       if (expMon.value.match(/^[0-9]{1,2}$/) 
         && expYear.value.match(/^[0-9]{1,2}$/) ) {
         expOk.innerHTML = `OK`
@@ -35,7 +32,6 @@ const adrs_ck = () => {
 
     //有効year確認
     expYear.addEventListener('input', function(){
-      console.log('有効yearck')//動作ck
       if (expMon.value.match(/^[0-9]{1,2}$/) 
         && expYear.value.match(/^[0-9]{1,2}$/) ) {
         expOk.innerHTML = `OK`
@@ -51,7 +47,6 @@ const adrs_ck = () => {
     const cvcOk = document.getElementById("cvc-ok");
 
     cardCvc.addEventListener('input', function(){
-      console.log('cvc-ck')//動作ck
       if (cardCvc.value.match(/^[0-9]{3,4}$/)) {
         cvcOk.innerHTML = `OK`
         cvcOk.setAttribute("style","background-color:green");
@@ -67,7 +62,6 @@ const adrs_ck = () => {
     const postOk = document.getElementById("post-ok");
 
     post.addEventListener('input', function(){
-      console.log('郵便ck')//動作ck
       if (post.value.match(/^[0-9]{3}-[0-9]{4}$/) ) {
         postOk.innerHTML = `OK`
         postOk.setAttribute("style","background-color:green");
@@ -82,7 +76,6 @@ const adrs_ck = () => {
     const prefOk = document.getElementById("pref-ok");
 
     pref.addEventListener('change',function(){
-      console.log('都道府県選択ck')//動作ck
       if (pref.select != `--` ){
         prefOk.innerHTML = `OK`
         prefOk.setAttribute("style","background-color:green");
@@ -94,7 +87,6 @@ const adrs_ck = () => {
     const cityOk = document.getElementById("city-ok");
 
     city.addEventListener('input', function(){
-      console.log('市区町村ck')//動作ck
       if (city.value != `` ) {
         cityOk.innerHTML = `OK`
         cityOk.setAttribute("style","background-color:green");
@@ -109,7 +101,6 @@ const adrs_ck = () => {
     const areaOk = document.getElementById("area-ok");
 
     area.addEventListener('input', function(){
-      console.log('番地ck')//動作ck
       if (area.value != `` ) {
         areaOk.innerHTML = `OK`
         areaOk.setAttribute("style","background-color:green");
@@ -124,7 +115,6 @@ const adrs_ck = () => {
     const telOk = document.getElementById("tel-ok");
 
     tel.addEventListener('input', function(){
-      console.log('tel-ck')//動作ck
       if (tel.value.match(/^[0-9]{10,11}$/) ) {
         telOk.innerHTML = `OK`
         telOk.setAttribute("style","background-color:green");
@@ -138,7 +128,6 @@ const adrs_ck = () => {
     const buyBtn = document.getElementById("b-btn");
     const neIn = document.getElementById("ne-in");
     window.addEventListener(`input`,function(){
-      console.log('ボタン隠し')//動作ck
       if (postOk.innerHTML == `OK` && prefOk.innerHTML == `OK` 
       && cityOk.innerHTML == `OK` && areaOk.innerHTML == `OK` 
       && telOk.innerHTML == `OK` && cardOk.innerHTML == `OK` 

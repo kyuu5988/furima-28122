@@ -61,6 +61,11 @@ describe OrdAdrs, type: :model do
         @ord_adrs.valid?
         expect(@ord_adrs.errors.full_messages).to include("Phone 10桁または11桁の正しい番号を入力して下さい。（ハイフン不要）")
       end
+      it "電話番号が12桁以上だとNG" do
+        @ord_adrs.phone = "090123456780"
+        @ord_adrs.valid?
+        expect(@ord_adrs.errors.full_messages).to include("Phone 10桁または11桁の正しい番号を入力して下さい。（ハイフン不要）")
+      end
 
     end
   end
