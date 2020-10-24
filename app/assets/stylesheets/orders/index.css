@@ -143,6 +143,7 @@
   width: 50%;
   margin: 0 auto;
   margin-top: 50px;
+  display: none;
 }
 
 .buy-red-btn {
@@ -153,4 +154,30 @@
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.need-input {
+  width: 50%;
+  background: gray;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.buy_notice {
+  width: 200px;
+  height: 190px;
+  font-size: 20px;
+  color: #eee;
+  background: palevioletred;
+  text-align: center;
+  top: 250px;
+  right: 20px;
+  position: fixed;
+  border-radius: 4%;
+  border: 3px dotted orange;
 }
