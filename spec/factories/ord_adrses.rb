@@ -5,6 +5,8 @@ FactoryBot.define do
     city      {Faker::Address.city} 
     area      {Faker::Address.street_address}
     phone     {Faker::Base.numerify('090########')}
+    token     {"tok_abcd_sample00000000000000000"}
+    price     {5500}
     # association :user
     
   end
