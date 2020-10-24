@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
       pay_item
         
       # 販売済み処理
-      # sold_out
+      sold_out
 
       @ord_adrs.save
       flash[:buy] = "購入が完了しました！お買い上げありがとうございます！"
